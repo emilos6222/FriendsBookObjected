@@ -25,12 +25,18 @@ class UzytkownikMenedzer
     bool czyIstniejeLogin(string login);
 
 public:
-    UzytkownikMenedzer(string nazwaPlikuZUzytkownikami):plikZUzytkownikami(nazwaPlikuZUzytkownikami){};
+    UzytkownikMenedzer(string nazwaPlikuZUzytkownikami):plikZUzytkownikami(nazwaPlikuZUzytkownikami)
+    {
+        idZalogowanegoUzytkownika = 0;
+    };
+
+    int pobierzIdZalogowanegoUzytkownika();
+
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
     void wczytajUzytkownikowZPliku();
     void zmianaHaslaZalogowanegoUzytkownika();
-    void logowanieUzytkownika();
+    int logowanieUzytkownika();
     void wylogowanieUzytkownika();
 
 };

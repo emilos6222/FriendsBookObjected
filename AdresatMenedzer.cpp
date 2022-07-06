@@ -10,20 +10,21 @@ void AdresatMenedzer::dodajAdresata()
 
     adresaci.push_back(adresat);
     dopiszAdresataDoPliku(adresat);
-
-    ++idOstatniegoAdresata;
 }
 
 Adresat AdresatMenedzer::podajDaneNowegoAdresata()
 {
     Adresat adresat;
+    int idOstatniegoAdresata = plikZAdresatami.pobierzIdOstatniegAdresata();
 
     adresat.ustawId(++idOstatniegoAdresata);
     adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
+    //getchar();
 
     cout << "Podaj imie: ";
     string tymczasowaDana = "";
     MetodyPomocnicze metodyPomocnicze;
+
     tymczasowaDana = metodyPomocnicze.wczytajLinie();
     tymczasowaDana = metodyPomocnicze.zamienPierwszaLitereNaDuzaAPozostaleNaMale(tymczasowaDana);
     adresat.ustawImie(tymczasowaDana);
@@ -93,4 +94,7 @@ void AdresatMenedzer::ustawidZalogowanegoUzytkownika(int noweIdZalogowanegoUzytk
     idZalogowanegoUzytkownika = noweIdZalogowanegoUzytkownika;
 }
 
-
+void AdresatMenedzer::wyczyscAdresatow()
+{
+    adresaci.clear();
+}
