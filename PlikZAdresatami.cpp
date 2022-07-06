@@ -61,10 +61,9 @@ bool PlikZAdresatami::czyPlikJestPusty(fstream &plikTekstowy)
         return false;
 }
 
-int PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adresat> &adresaci, int idZalogowanegoUzytkownika)
+void PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adresat> &adresaci, int idZalogowanegoUzytkownika)
 {
     Adresat adresat;
-    int idOstatniegoAdresata = 0;
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
@@ -86,13 +85,6 @@ int PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adres
         cout << "Nie udalo sie otworzyc pliku i wczytac danych." << endl;
 
     plikTekstowy.close();
-
-    if (daneOstaniegoAdresataWPliku != "")
-    {
-        idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
-    }
-    else
-        idOstatniegoAdresata = 0;
 }
 
 int PlikZAdresatami::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami)
@@ -156,4 +148,35 @@ int PlikZAdresatami::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(strin
     int pozycjaRozpoczeciaIdAdresata = 0;
     int idAdresata = metodyPomocnicze.konwersjaStringNaInt(metodyPomocnicze.pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdAdresata));
     return idAdresata;
+}
+
+int PlikZAdresatami::pobierzIdOstatniegAdresata()
+{
+    Adresat adresat;
+    int idOstatniegoAdresata = 0;
+    string liniaTekstu = "";
+    string tymczasoweID = "";
+    fstream plikTekstowy;
+    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in | ios::app);
+
+    if (plikTekstowy.good() == true)
+    {
+        while (getline(plikTekstowy, liniaTekstu))
+        {
+            int numerZnakuWTekscieOddzielajacego = 0;
+
+            numerZnakuWTekscieOddzielajacego = liniaTekstu.find("|");
+            tymczasoweID.assign(liniaTekstu, 0, numerZnakuWTekscieOddzielajacego);
+            idOstatniegoAdresata = stoi(tymczasoweID);
+        }
+        plikTekstowy.close();
+        return idOstatniegoAdresata;
+    }
+    else
+    {
+        cout << "Nie udalo sie otworzyc pliku i wczytac danych." << endl;
+        plikTekstowy.close();
+        return idOstatniegoAdresata;
+    }
+
 }
