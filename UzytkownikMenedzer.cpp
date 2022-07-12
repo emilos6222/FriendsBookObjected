@@ -4,7 +4,7 @@
 void UzytkownikMenedzer::rejestracjaUzytkownika()
 {
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
-
+    getchar(); //problem z pobieraniem dodatkowego znaku
     uzytkownicy.push_back(uzytkownik);
     plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
 
@@ -36,10 +36,7 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika()
 
 int UzytkownikMenedzer::pobierzIdNowegoUzytkownika()
 {
-    if (uzytkownicy.empty() == true)
-        return 1;
-    else
-        return uzytkownicy.back().pobierzId() + 1;
+    return uzytkownicy.empty() ? 1 : uzytkownicy.back().pobierzId() + 1;
 }
 
 bool UzytkownikMenedzer::czyIstniejeLogin(string login)
@@ -65,17 +62,12 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow()
     }
 }
 
-void UzytkownikMenedzer::wczytajUzytkownikowZPliku()
-{
-    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
-}
-
 void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
 {
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
     MetodyPomocnicze metodyPomocnicze;
-    getchar();
+    //getchar();
     noweHaslo = metodyPomocnicze.wczytajLinie();
 
     for(unsigned int i = 0; i < uzytkownicy.size(); i++)

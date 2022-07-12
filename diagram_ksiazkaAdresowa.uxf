@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.0.0">
-  <zoom_level>7</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>126</y>
-      <w>322</w>
-      <h>154</h>
+      <x>333</x>
+      <y>0</y>
+      <w>414</w>
+      <h>288</h>
     </coordinates>
     <panel_attributes>KsiazkaAdresowa
 -
 -uzytkownikMenedzer:UzytkownikMenedzer 
--adresatMenedzer:AdresatMenedzer
+-*adresatMenedzer:AdresatMenedzer
+-NAZWA_PLIKU_Z_ADRESATAMI:String
 -
 +KsiazkaAdresowa()
-+rejestracjaUzytkownika():void 
-+wypiszWszystkichUzytkownikow():void 
-+logowanieUzytkownika():Integer
-+zmianaHaslaZalogowanegoUzytkownika():void 
-+dodajAdresata():void 
-+wyswietlWszystkichAdresatow():void 
-+wczytajAdresatowZalogowanegoUzytkownikaZPliku():void 
-+wylogowanieUzytkownika():Void
++~KsiazkaAdresowa()
+-rejestracjaUzytkownika():void 
+-wypiszWszystkichUzytkownikow():void 
+-logowanieUzytkownika():Integer
+-zmianaHaslaZalogowanegoUzytkownika():void 
+-dodajAdresata():void 
+-wyswietlWszystkichAdresatow():void 
+-wczytajAdresatowZalogowanegoUzytkownikaZPliku():void 
+-wylogowanieUzytkownika():Void
+-pokazMenuUzytkownika():Void
+-pokazMenuAdresatow():Void
+-wybierzOpcjeZMenuAdresatow():Void
+-wybierzOpcjeZMenuUzytkownikow():Void
 
 </panel_attributes>
     <additional_attributes/>
@@ -30,10 +36,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>399</x>
-      <y>581</y>
-      <w>154</w>
-      <h>280</h>
+      <x>0</x>
+      <y>756</y>
+      <w>198</w>
+      <h>360</h>
     </coordinates>
     <panel_attributes>Adresat
 -
@@ -45,6 +51,7 @@
 -email:String
 -adres:String
 -
++Adresat()
 +ustawId():Void
 +ustawIdUzytkownika():Void
 +ustawImie():Void
@@ -67,10 +74,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>595</x>
-      <y>308</y>
-      <w>224</w>
-      <h>189</h>
+      <x>252</x>
+      <y>405</y>
+      <w>288</w>
+      <h>243</h>
     </coordinates>
     <panel_attributes>UzytkownikMenedzer
 -
@@ -85,7 +92,6 @@
 +wylogowanieUzytkownika():void
 +zmianaHaslaZalogowanegoUzytkownika():void
 +wypiszWszystkichUzytkownikow():void 
-+wczytajUzytkownikowZPliku():void
 -podajDaneNowegoUzytkownika():Uzytkownik
 -pobierzIdNowegoUzytkownika():Integer
 -czyIstniejeLogin():bool
@@ -95,10 +101,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1288</x>
-      <y>462</y>
-      <w>266</w>
-      <h>91</h>
+      <x>1143</x>
+      <y>603</y>
+      <w>342</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>MetodyPomocniccze
 -
@@ -108,6 +114,7 @@
 +zamienPierwszaLitereNaDuzaAPozostaleNaMale():String
 +pobierzLiczbe():String
 +konwersjaStringNaInt():Integer
++wczytajZnak():Char
 
 
 </panel_attributes>
@@ -116,14 +123,14 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>889</x>
-      <y>581</y>
-      <w>364</w>
-      <h>147</h>
+      <x>630</x>
+      <y>756</y>
+      <w>468</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>PlikZAdresatami
 -
--nazwaPlikuZAdresatami: String
+-NAZWA_PLIKU_Z_ADRESATAMI: String
 -
 -zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami():String 
 -czyPlikJestPusty():Bool 
@@ -133,21 +140,21 @@
 +PlikZAdresatami()
 +dopiszAdresataDoPliku():Void 
 +wczytajAdresatowZalogowanegoUzytkownikaZPliku():Integer
-+pobierzIdOstatniegAdresata:Integer
++pobierzIdOstatniegAdresata():Integer
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>588</x>
-      <y>581</y>
-      <w>273</w>
-      <h>168</h>
+      <x>243</x>
+      <y>756</y>
+      <w>351</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>AdresatMenedzer
 -
--idZalogowanegoUzytkownika:Integer
+-ID_ZALOGOWANEGO_UZYTKOWNIKA:Integer
 -adresaci:vector &lt;Adresat&gt;
 -plikZAdresatami:PlikZAdresatami
 -
@@ -166,10 +173,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>413</x>
-      <y>308</y>
-      <w>147</w>
-      <h>147</h>
+      <x>18</x>
+      <y>405</y>
+      <w>189</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>Uzytkownik
 -
@@ -190,14 +197,14 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>854</x>
-      <y>308</y>
-      <w>371</w>
-      <h>126</h>
+      <x>585</x>
+      <y>405</y>
+      <w>477</w>
+      <h>162</h>
     </coordinates>
     <panel_attributes>PlikZUzytkownikami
 -
--nazwaPlikuZUzytkownikami:String
+-NAZWA_PLIKU_Z_UZYTKOWNIKAMI:String
 -
 +PlikZUzytkownikami()
 +dopiszUzytkownikaDoPliku():void
