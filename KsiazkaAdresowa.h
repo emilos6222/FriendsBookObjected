@@ -28,6 +28,10 @@ class KsiazkaAdresowa
     void pokazMenuAdresatow();
     void wybierzOpcjeZMenuAdresatow();
     void wybierzOpcjeZMenuUzytkownikow();
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
+    void usunAdresata();
+    void edytujAdresata();
 
 public:
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami)

@@ -53,6 +53,16 @@ void KsiazkaAdresowa::wylogowanieUzytkownika()
     adresatMenedzer = NULL;
 }
 
+void KsiazkaAdresowa::wyszukajAdresatowPoImieniu()
+{
+    adresatMenedzer -> wyszukajAdresatowPoImieniu();
+}
+
+void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku()
+{
+    adresatMenedzer -> wyszukajAdresatowPoNazwisku();
+}
+
 void KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownikow()
 {
     while (true)
@@ -116,11 +126,22 @@ void KsiazkaAdresowa::wybierzOpcjeZMenuAdresatow()
             switch (wyborAdresat)
             {
             case '1':
-                //getchar();//rozwiazanie problemu z dodawaniem adresata (pomija wpisanie imienia)
                 dodajAdresata();
                 break;
             case '2':
+                wyszukajAdresatowPoImieniu();
+                break;
+            case '3':
+                wyszukajAdresatowPoNazwisku();
+                break;
+            case '4':
                 wyswietlWszystkichAdresatow();
+                break;
+            case '5':
+                usunAdresata();
+                break;
+            case '6':
+                edytujAdresata();
                 break;
             case '7':
                 zmianaHaslaZalogowanegoUzytkownika();
@@ -144,10 +165,24 @@ void KsiazkaAdresowa::pokazMenuAdresatow()
     cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Dodaj adresata" << endl;
-    cout << "2. Wyswietl adresatow" << endl;
+    cout << "2. Wyswietl adresatow po imieniu" << endl;
+    cout << "3. Wyswietl adresatow po nazwisku" << endl;
+    cout << "4. Wyswietl adresatow" << endl;
+    cout << "5. Usun adresata" << endl;
+    cout << "6. Edytuj adresata" << endl;
     cout << "---------------------------" << endl;
     cout << "7. Zmien haslo" << endl;
     cout << "8. Wyloguj sie" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
+}
+
+void KsiazkaAdresowa::usunAdresata()
+{
+    adresatMenedzer->usunAdresata();
+}
+
+void KsiazkaAdresowa::edytujAdresata()
+{
+    adresatMenedzer->edytujAdresata();
 }
